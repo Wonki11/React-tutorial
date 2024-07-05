@@ -68,7 +68,16 @@ const 부모예제 = () => {
         <ID값 handler={id값조종}/>
         <PW값 handler={pw값조종}/>
 
-        {/* Id,Pw가 입력되지 않으면 버튼 비활성화 */}
+        {/* Id,Pw가 입력되지 않으면 버튼 비활성화 
+        <button disabled={id.length === 0 || pw.length === 0}>
+            Login
+        </button>
+        disabled = 버튼을 클릭하지 못하게 비활성화
+        disabled는 버튼 이외 input textarea에서 사용 가능
+        */}
+        <button disabled={id.length === 0 || pw.length === 0}>
+            Login
+        </button>
         
         </>
 
