@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
-
+import {Routes , Route} from "react-router-dom";
+import Header from './component/Header';
+import NavBar from './component/NavBar';
+import Main from './component/Main';
+import TodoList from './component/TodoList';
+import TicTapToe from './component/TicTapToe';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <NavBar />
+
+      <Routes>
+        <Route path="/main" element={<Main />} />
+        <Route path="/todoList" element={<TodoList />} />
+        <Route path="/tictaptoe" element={<TicTapToe />} />
+
+      </Routes>
     </div>
   );
 }
