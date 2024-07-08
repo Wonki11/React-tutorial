@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {Link} from 'react-router-dom';
 
 const Game2 = () => {
     const [guess , setGuess] = useState(''); 
@@ -9,6 +10,8 @@ const Game2 = () => {
 
     const [attempts, setAttempts] = useState(0);
 
+    const [isCorrect, setIsCorrect] = useState(false);
+
     const handleChange = (e) => {
         setGuess(e.target.value);
     }
@@ -16,13 +19,14 @@ const Game2 = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
 
-        const userGuess = parseInt(guess,30);
+        const userGuess = parseInt(guess,10);
   
 
     setAttempts(attempts + 1);
 
     if(userGuess === number){
         setMessage('축하합니다. 맞추셨습니다.');
+        setIsCorrect(true);
     } else if(userGuess > number){
         setMessage('숫자가 너무 큽니다');
     } else{
@@ -37,7 +41,7 @@ const Game2 = () => {
 
   return(
     <div>
-        <h1>스무고개</h1>
+        <h1>스무고개 2단계</h1>
         <form onSubmit={handleSubmit}>
             <input
                 type="number"
@@ -48,7 +52,10 @@ const Game2 = () => {
                 <button>추측하기</button>
         </form>
         <p>{message}</p>
-        <button onClick={handleRestart}>재시작버튼</button>
+        {isCorrect  ?  
+      (<Link to="/game"><button>처음으로 돌아가기</button></Link>) 
+      :  
+      (<button onClick={handleRestart}>재시작버튼</button>)}
 
     </div>
   );
