@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './TicTapToe.css'
 import {Link} from 'react-router-dom';
 /*
@@ -15,6 +15,10 @@ const 배열랜덤섞기 = (배열) => {
     return 배열.sort(() => Math.random() - 0.5);
 }
 
+
+
+
+// 컴포넌트 시작 위치
 const TicTapToe = () => {
     // numbers 1부터 9까지 숫자가 섞인 배열
     // ...Array(9) 숫자가 담길 그릇을 9개 만듬 숫자가 담길 그릇이 9개
@@ -24,6 +28,8 @@ const TicTapToe = () => {
     const [numbers, setNumbers] = useState(
       배열랜덤섞기([...Array(9).keys()].map((n) => n + 1))
     );
+
+    const [timer , setTimer] = useState(10); // 처음 초기시간 설정
   
     // 사용자가 클릭해야하는 다음 숫자를 나타냄
     const [nextNumber, setNextNumber] = useState(1); // 사용자가 클릭해야하는 처음 수가 1이기 때문
@@ -31,6 +37,19 @@ const TicTapToe = () => {
     // 게임 상태에 따라 사용한테 보여줄 메세지를 표현
     const [message, setMessage] = useState(""); //처음에는 할 말이 없기 때문에 빈공간
   
+    useEffect(() =>{
+      let countdown;
+      if(timer > 0){
+        countdown = setTimeout(() =>{
+          setTimer(timer -1 );
+       },1000);
+    
+      } else if (timer === 0) {
+        alert("시간초과")
+      }
+    
+    })
+
     const 숫자클릭하기 = (number) => {
       //만약에 현재 사용자가 클릭해야하는 숫자와 사용자가 클릭한 숫자가 서로 일치하는가 ?
       if (number === nextNumber) {
@@ -49,14 +68,21 @@ const TicTapToe = () => {
     const 재시작버튼 = () => {
         setNumbers(배열랜덤섞기([...Array(9).keys()].map(n=>n+1))); //다시 초기 숫자 세팅
         //다음숫자 세팅 
-        
-        
+        setNextNumber(1);
         // 메세지 세팅
+        setMessage('');
+        setTimer(10);
         
-    }
+    };
+
+   
+    
+
+
     return (
         <div className="tictaptoe-container">
           <h1>틱탭토</h1>
+          <div className="timer">남은시간 : {timer}초</div>
           <div className='tictaptoe-grid'>
             {numbers.map((number) => (
               <button className='tictaptoe-button' key={number}  onClick={() => 숫자클릭하기(number)}>
