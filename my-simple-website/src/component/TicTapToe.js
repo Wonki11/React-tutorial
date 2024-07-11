@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
 import './TicTapToe.css'
+import {Link} from 'react-router-dom';
+/*
+useEffect(() =>{
+  //TictapToe.js가 실행되면 특정 기능 시작!
+}, [])
+*/
 
 const 배열랜덤섞기 = (배열) => {
     //sort = 정렬
@@ -30,6 +36,8 @@ const TicTapToe = () => {
       if (number === nextNumber) {
         if (number === 9) {
           setMessage("축하합니다. 모든 숫자를 순서대로 클릭했습니다.");
+
+          setNextNumber(nextNumber + 1);
         } else {
           setNextNumber(nextNumber + 1);
         }
@@ -40,7 +48,11 @@ const TicTapToe = () => {
 
     const 재시작버튼 = () => {
         setNumbers(배열랜덤섞기([...Array(9).keys()].map(n=>n+1))); //다시 초기 숫자 세팅
-        //다음숫자 세팅 // 메세지 세팅
+        //다음숫자 세팅 
+        
+        
+        // 메세지 세팅
+        
     }
     return (
         <div className="tictaptoe-container">
@@ -53,7 +65,11 @@ const TicTapToe = () => {
             ))}
           </div>
           <p>{message}</p>
-          <button onClick={재시작버튼}>게임 재시작</button>
+          {/* 예를들어 수를 모두 맞출 경우에만 다음단계로 이동버튼 보여주기 */}
+          <button className='restart-button' onClick={재시작버튼}>게임 재시작</button>
+
+        {nextNumber > 9 && ( <Link to="/tictaptoetwostep"><button className='restart-button' > 다음단계로 이동</button></Link>
+        )}
         </div>
       );
     };

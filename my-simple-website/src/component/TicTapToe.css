@@ -9,6 +9,13 @@
     grid-gap: 10px;
     justify-content: center;
   }
+
+  .tictaptoe1-grid {
+    display: grid; /* 격자*/
+    grid-template-columns: repeat(5, 100px); /*한줄에 3개씩 보이게 설정*/
+    grid-gap: 10px; /* 격자에 틈을 10px만큼 위 아래로 준 것*/
+    justify-content: center; /* 내용물을 모두 가운데로 모이게 하기*/
+  }
   
   .tictaptoe-button {
     width: 100px;
@@ -20,4 +27,24 @@
     border: none;
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  }
+
+  .tictaptoe-button:hover{
+    background-color: aliceblue;
+  }
+  .restart-button {
+    margin-top: 20px;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .restart-button:hover {
+    background-color: #e53935;
   }
