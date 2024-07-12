@@ -11,6 +11,7 @@ const Axios_Ex2 = () =>{
 
     useEffect (() => {
         axios.get("https://jsonplaceholder.typicode.com/comments")
+        // 무사히 잘 가져왔다면 then으로 data값 변경
         .then(res => {
             setData(res.data);
         })
@@ -24,14 +25,14 @@ const Axios_Ex2 = () =>{
         <>
             <h1>내용 가져오기 </h1>
             <ul>
-            {comments.amp(comment =>(
-                <li key={data}>
-                    <strong>UserID : </strong>{} <br/>
-                    <strong>ID : </strong>{} <br/>
-                    <strong>Title : </strong>{} <br/>
-                    <strong>Completed : </strong>{} <br/>
+            {data.amp(comment =>(
+                <li key={comment.id}>
+                    <strong>UserID : </strong>{comment.id} <br/>
+                    <strong>Name : </strong>{comment.name} <br/>
+                    <strong>Email : </strong>{comment.email} <br/>
+                    <strong>Body : </strong>{comment.body} <br/>
 
-                </li>
+                </li> // 마이페이지 회원정보조회 참고가능
             ))}
             </ul>
         </>
