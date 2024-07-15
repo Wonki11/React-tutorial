@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import LoginContext from './components/LoginContext';
+import Signup from './components/SignUp';
+import './App.css';
+import './components/LoginContext';
 
 /* 현재 App.js는 제일 위에 있는 컴포넌트 = 객체 */
 function App() {
@@ -12,8 +15,8 @@ function App() {
   //
   return (  
    <LoginContext.Provider value={ {loginMember , setLoginMember} }>
-    <button onClick={ () => {setSignUpView(!setSignUpView)}}>
-      {setSignUpView ? ('회원 가입 닫기') : ('회원 가입 열기')}
+    <button onClick={ () => {setSignUpView(!signUpView)}}>
+      {signUpView ? ('회원 가입 닫기') : ('회원 가입 열기')}
     </button>
     {/* 회원 가입 화면 */}
     <div className='signup-wrapper'>
@@ -25,7 +28,7 @@ function App() {
 
     <h1>Todo List</h1>
     {/* 로그인을 해야지 TodoList 확인 가능 */}
-
+    
       {/* value={} => 하나의 값만 작성 
         value={{}} => 두가지 이상의 값을 작성
         loginMember => 처음에 로그인 안된 초기값을 가지고 있는 것
