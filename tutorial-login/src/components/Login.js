@@ -8,13 +8,13 @@ const Login = () => {
     const {loginMember , setLoginMember} = useContext(LoginContext);
 
     /* 아이디, 비밀번호 상태 변수 */
-    const[id, setId] = useState('');
-    const[pw, setPw] = useState('');
+    const[id, setId] = useState("");
+    const[pw, setPw] = useState("");
 
     //로그인버튼 함수 만들기
     const 로그인버튼 = () => {
         fetch('/login', {
-            method:"Post",
+            method:"POST",
             headers : {
             // 사용자 > 서버에 로그인한 정보가 일치하는게 있는지 확인
             "Content-Type" : "application/json" , 
@@ -27,7 +27,7 @@ const Login = () => {
             console.log(map);
 
             // 로그인 실패시
-            if(map.loginMember === null {
+            if(map.loginMember === null) {
                 alert('아이디 또는 비밀번호가 일치하지 않습니다.');
                 return;
             }
@@ -39,9 +39,17 @@ const Login = () => {
             //id,pw값 모두 지우기
             setId('');
             setPw('');  
+            alert('로그인 성공');
         })
         
     }
+
+    /* 로그아웃 이벤트 핸들러 */
+    const 로그아웃버튼 = () => {
+        setLoginMember(null);
+        alert('로그아웃 성공');
+    }
+
     return(
         <div className="login-container">
             <table>
@@ -71,7 +79,12 @@ const Login = () => {
                     </tr> 
                 </tbody>
             </table>
+
+            {/* loginMember 가 null이 아닌 경우 로그아웃 버튼 보이게 하기 */}
+            {loginMember &&(
+                <button onClick={로그아웃버튼}>로그아웃</button>
+            )}
         </div>
-    )
-}
+    );
+};
 export default Login;

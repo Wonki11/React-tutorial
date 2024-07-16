@@ -1,5 +1,11 @@
 import React, {useState} from "react";
 
+/*
+F12 를 누르고 console(콘솔) 창에서
+error 가 없는지 확인
+만약 error가 뜬다면
+백엔드 서버와 연결이 안됐을 가능성이 높음
+*/
 
 const Signup = () =>{
     const [id, setId] = useState('');
@@ -9,18 +15,18 @@ const Signup = () =>{
     const [result, setResult] = useState('');
 
     //아이디 중복검사와 중복검사 이벤트 핸들러
-    const [idValidation, setIdValidation] = useState(false);
+     const [idValidation, setIdValidation] = useState(false);
     // false = 사용불가 true = 사용가능
  
 
     //아이디 중복검사 이벤트 핸들러
     const 아이디중복검사 = (eventId) => {
-        // eventId : 현재 입력하는 이벤트가 발생한 Id 
+        // eventId : 현재 입력하는 이벤트가 발생한 Id
         setId(eventId);
 
         // 4글자 미만이면 중복 검사 X
         // 입력받은 아이디 공백제거 하고 공백제거한 총 길이가 4보다 적다면
-        // trim() 양쪽옆에있는 공백제거 length = 길이
+        // trim() 양쪽옆에있는 공백제거   length = 길이
         if(eventId.trim().length < 4) { 
             setIdValidation(false);
             return;
@@ -28,7 +34,7 @@ const Signup = () =>{
 
         // DB에 중복되는 아이디가 있는지 비동기로 아이디 중복검사를 수행
         // axios나 fetch를 사용할 수 있음
-        fetch("/idCheck?id= " + eventId) //SpringBoot Controller와 연결할 Mapping url
+        fetch("/idCheck?id=" + eventId) //SpringBoot Controller와 연결할 Mapping url
         .then(response => response.text())
         .then(result => {
 
@@ -68,7 +74,7 @@ const Signup = () =>{
               input값들 = {khT,khT1234};
         */
 
-        fetch("/signUp" , {
+        fetch("/signup" , {
             //Spring Boot Container에 PostMapping("/signUp") 에 전달하겠다는 표시
             method : "POST" , 
             
@@ -83,7 +89,7 @@ const Signup = () =>{
             //body : 내용 본문 작성
             body : JSON.stringify(input값들) // 사용자가 작성한 모든 값을 보내기
         })
-
+        //결과 응답받아서 저장해놓고
         .then(response => response.text())
         .then(result => {
             if(Number(result) > 0) { //결과가 0보다 크다면 결과가 == 1 이면 회원가입 완료 
@@ -91,6 +97,9 @@ const Signup = () =>{
                 //input 값들 모두 초기화
                 setId('');
                 setPw('');
+                setPwCheck('');
+                setName('');
+                //setResult('');
             } else {
                 setResult('회원가입 실패');
             }
@@ -108,9 +117,8 @@ const Signup = () =>{
             ==똑같음==
             <label><input/></label> 
             */}
-            <label>
-                ID : 
-                <input type="text"
+              <label>  ID :  
+                <input type="text" 
                     onChange={e => 아이디중복검사(e.target.value)}
                     value={id}
                     className={idValidation ? '' : 'id-err'}
