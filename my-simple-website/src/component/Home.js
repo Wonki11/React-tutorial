@@ -15,19 +15,20 @@ const Home = () => {
 
 
         {/* part 1 : 사진을 넣지 않고 소개만 작성하는 about */}
-        <section className="home-about-one">
+        {/*<section className="home-about-one">
             <h2>소개</h2>
             <p>저는 조원기 입니다. KH정보교육원에서 FullStack 과정을 수료했습니다.</p>
         </section>
-
+*/}
         {/* part 2 : 한 row를 두 colum으로 나눠서 좌측은 사진 우측은 소개 작성하는 about */}
         <section className="home-about-two">
-        <div calssName="about-row">
+        <h2>소개</h2>
+        <div className="about-row">
             <div className="about-image">
-                <img src="프로필.jpg" alt="프로필 사진" />
+                <img src="hancom.jpg" alt="프로필 사진" />
             </div>
             <div className="about-text">
-                <h2>소개</h2>
+                
                 <p>이름     : </p>
                 <p>나이     : </p>
                 <p>수료과정  : </p>
@@ -39,7 +40,7 @@ const Home = () => {
         </section>
 
         {/* 보유 기술 섹션 */}
-        <section className="home=skills">
+        <section className="home-skills">
             <h2>기술</h2>
             <ul>
                 <li>HTML / CSS / JavaScript</li>
