@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./TicTapToe.css";
+import "../TicTapToe.css";
 import { Link } from "react-router-dom";
 
 const 배열랜덤섞기 = (배열) => {

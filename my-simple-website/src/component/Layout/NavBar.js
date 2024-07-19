@@ -10,7 +10,7 @@ const NavBar = () => {
         </li>
         <li><Link to="/game">숫자맞추기 게임</Link></li>
         <li><Link to="/todoList">할 일 목록 작성하기  </Link></li>
-        <li><Link to="/tictaptoe">틱탭토 게임</Link></li>ㅞㅡ
+        <li><Link to="/tictaptoe">틱탭토 게임</Link></li>
         <li><Link to="/typingTest">타자치기대회</Link> </li>
         <li> <Link to ="/movieRate">순위높은 영화추천</Link> </li>
         {/* 2단계 링크를 NavBar에는 작성하지 않음 

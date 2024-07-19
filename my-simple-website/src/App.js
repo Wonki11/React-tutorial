@@ -1,16 +1,17 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import Game from "./component/Game.js";
 import Game2 from "./component/GameTwoStep.js";
 import { Routes, Route } from "react-router-dom";
 import Home from "./component/Home.js";
-import Navbar from "./component/NavBar.js";
-import Header from "./component/Header.js";
+import Navbar from "./component/Layout/NavBar.js";
+import Header from "./component/Layout/Header.js";
 import TodoList from "./component/TodoList.js";
-import TicTapToe from "./component/TicTapToe.js";
-import TicTapToeTwoStep from "./component/TicTapToeTwoStep.js";
+import TicTapToe from "./component/TicTapToe/TicTapToe.js";
+import TicTapToeTwoStep from "./component/TicTapToe/TicTapToeTwoStep.js";
 import TypingTest from "./component/TypingTest.js";
 import MovieRating from "./component/Movie/MovieGrade.js";
+import Footer from "./component/Layout/Footer.js";
 function App() {
   return (
     <div>
@@ -28,7 +29,11 @@ function App() {
         <Route path="/typingTest"        element={<TypingTest/>}/>
         <Route path="/movieRate"         element = {<MovieRating/>}/>
       </Routes>
+
+      <Footer />
     </div>
+
+    
   );
 }
 

@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import './TicTapToe.css'
+import '../TicTapToe.css'
 import {Link} from 'react-router-dom';
+/*
+./ -> 현재 폴더에서 가져온 파일 동일한 폴더 위치에서 다른 파일을 가져오는 것
+../ -> 현재 폴더를 감싸고 있는 상위 폴더에서 다른 파일을 가지고 오는 것
+*/
 /*
 useEffect(() =>{
   //TictapToe.js가 실행되면 특정 기능 시작!
