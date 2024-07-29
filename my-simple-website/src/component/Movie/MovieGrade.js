@@ -10,10 +10,10 @@ const MovieRating = () => {
     useEffect(() => {
         axios.get('https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year')
         .then(res => {
-            // 위 url은 []rk dkslfk {} 에서 시작하므로 {}데이터를 감싸줄
+            // 위 url은 []가 아니라k {} 에서 시작하므로 {}데이터를 감싸줄
             // 임의의 변수명 res 사용 res = [] .data 데이터를 가져오겠다
             // 주소값에 key 이름으로 작성된 data 에서 movie라는 키 값 안에 적힌 title과 이미지를 가져올 것
-            //        [  {     data{moive{ 를 가져올것
+            //        [  {     data{movie{ 를 가져올것
             set영화들(res.data.data.movies); // {}중괄호 들에서 data를 가지고오겠다
             // 영화 데이터 모두 가지고오면 로딩중을 false 로 변경하기
             set로딩(false);
