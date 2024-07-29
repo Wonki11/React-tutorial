@@ -65,4 +65,5 @@ const MovieRating = () => {
         </div>
     )
 }
+//1
 export default MovieRating;
