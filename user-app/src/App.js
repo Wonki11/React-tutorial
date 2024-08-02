@@ -1,5 +1,6 @@
 import { useState } from "react";
 import User from "./User";
+import EditForm from './EditForm';
 function App() {
   // 빈 목록들
   // const [userList, setUserList] = useState([]);
@@ -11,6 +12,29 @@ function App() {
     { name: "유저3", age: 30, gender: "남자", phone: "010-3784-2834" },
   ]);
 
+  const [editUser,setEditUser] = useState(null);
+  // userState(null); useState(''); useState(""); 빈 값 처리
+
+/*
+1번 삼항연산자를 이용하지 않고 수정하기
+const updateUser = (유저수정하기) => {
+    setUserList(userList.map(  user => updateUser  ) );
+}
+2번 삼항연사자를 이용한 수정하기
+const updateUser = (유저수정하기) => {
+    setUserList(userList.map(
+        user =>  ( user === editUser       ?  updateUser    :  user   )
+    )    ); 
+  }
+*/
+
+
+  const updateUser = (유저수정하기) => {
+    setUserList(userList.map(
+      user => (user === editUser  ?  updateUser : user   )
+
+    )); //유저 수정하기 버튼을 누르면 유저 수정을 진행
+  }
   return (
     <div className="App">
       <h1>회원 정보 출력</h1>
@@ -33,10 +57,15 @@ function App() {
               user={item}
               userList={userList}
               setUserList={setUserList}
+              수정버튼={setEditUser}
             />
           ))}
         </tbody>
       </table>
+      {/* 만약에 수정하겠다 라는 버튼의 동작이 들어오면 수정하는 JS 파일을 보여주자*/}
+      {editUser && (
+        <EditForm user={editUser} updateUser={updateUser}/>
+      )}
     </div>
   );
 }

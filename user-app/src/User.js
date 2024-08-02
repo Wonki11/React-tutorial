@@ -1,8 +1,13 @@
-const User = (props) => {
-    const user = props.user;
+const User = ({user,userList,setUserList,수정버튼}) => {
+
+  /* 둘 다 동일
+1번 const User = ({user,userList,setUserList,수정버튼}) => {
+
+2번 const user = props.user;
     const userList = props.userList;
     const setUserList = props.setUserList;
-  
+    const 수정버튼 = props.setEditUser;
+   */
     const deleteUser = () => {
     const newUserList1 = userList.filter((item) => {return item === user; });
     const newUserList2 = userList.filter((item) =>  item === user );
@@ -24,6 +29,9 @@ const User = (props) => {
         <td>{user.phone}</td>
         <td>
           <button onClick={deleteUser}>삭제하기</button>
+        </td>
+        <td>
+          <button onClick={() => 수정버튼(user)}>수정하기</button>
         </td>
       </tr>
     );
